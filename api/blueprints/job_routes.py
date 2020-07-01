@@ -5,6 +5,7 @@ import json
 import jwt
 from dotenv import load_dotenv
 import os
+from blueprints.user_routes import User
 
 # loading app secret
 load_dotenv()
@@ -26,5 +27,6 @@ class Job(me.Document):
 	active = me.BooleanField(required=True, default=True)
 	feedback = me.StringField(required=False)
 	ghosted = me.BooleanField(required=False)
+	user = me.ReferenceField(User, required=True)
 
 
