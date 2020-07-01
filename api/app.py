@@ -4,28 +4,34 @@ from dotenv import load_dotenv
 from flask_mongoengine import MongoEngine
 import os
 
-# load environmentals
+# import blueprints
+from blueprints.user_routes import user_routes
+
+# Loading environmentals
 load_dotenv()
 mongodb_uri = os.getenv('MONGODB_URI')
 
 # TODO: Set to false in production
 DEBUG = True
 
-# Create flask instance for routing
+# Creating flask instance for routing
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-# Set up cors
+# setting up cors
 CORS(app, resources={r'/*': {'origins': '*'}})
 
-# Connecting to Mongo
-
+# Connecting to MongoDB Atlas
 app.config['MONGODB_SETTINGS'] = {
-	'host': mongodb_uri
+    'host': mongodb_uri
 }
 db = MongoEngine()
 db.init_app(app)
 
-# start server
+# register routes
+app.register_blueprint(user_routes, url_prefix='/api/users')
+
+
+# start the server
 if __name__ == '__main__':
-	app.run()
+    app.run()
