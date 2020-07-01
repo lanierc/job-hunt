@@ -30,3 +30,23 @@ class Job(me.Document):
 	user = me.ReferenceField(User, required=True)
 
 
+# create a job
+@job_routes.route('', methods=['POST'])
+def create_job():
+	post_data = request.get_json()
+	new_job = Job(
+		title=post_data.get('title'),
+		company=post_data.get('company'),
+		date_posted=post_data.get('date_posted'),
+		date_applied=post_data.get('date_applied'),
+		posting_url=post_data.get('posting_url'),
+		direct_posting=post_data.get('direct_posting'),
+		contact_name=post_data.get('contact_name'),
+		contact_email=post_data.get('contact_email'),
+		user=post_data.get('user')
+	)
+	new_job.save()
+	return jsonify({
+		'status': 'success',
+		'data': new_job
+	})
