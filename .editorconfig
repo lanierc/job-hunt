@@ -5,7 +5,7 @@ charset = utf-8
 indent_style = tab
 indent_size = 2
 
-[*.js]
+[*.tsx]
 charset = utf-8
 indent_size = 2
 indent_style = tab
