@@ -8,6 +8,18 @@
 	position: relative;
 }
 
+.App .logo {
+	width: 175px;
+	position: absolute;
+	top: 3vh;
+	left: 3%;
+}
+
+.App .logo img {
+	width: 100%;
+	height: auto;
+}
+
 .App > .container {
 	background: #eee;
 	position: absolute;
