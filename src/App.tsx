@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import logo from "./assets/logo.png";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					<div className="container">
 						<Route exact path="/" component={Home} />
 						<Route path="/signup" component={Signup} />
+						<Route path="/login" component={Login} />
 					</div>
 				</Router>
 			</UserContextProvider>
