@@ -9,6 +9,7 @@ interface IUser {
 		verifyPassword: string,
 		name: string
 	) => void;
+	doLogin: (email: string, password: string) => void;
 }
 
 export const UserContext = createContext<IUser>({
@@ -21,6 +22,9 @@ export const UserContext = createContext<IUser>({
 	) => {
 		return null;
 	},
+	doLogin: (email: string, password: string) => {
+		return null;
+	},
 });
 
 const UserContextProvider: React.FC = (props) => {
@@ -28,9 +32,9 @@ const UserContextProvider: React.FC = (props) => {
 
 	const doSignup = (
 		email: string,
-		password: String,
-		verifyPassword: String,
-		name: String
+		password: string,
+		verifyPassword: string,
+		name: string
 	): void => {
 		//check for matching password
 		if (password === verifyPassword) {
@@ -48,8 +52,25 @@ const UserContextProvider: React.FC = (props) => {
 		}
 	};
 
+	const doLogin = (email: string, password: string): void => {
+		axios({
+			method: "POST",
+			url: "/api/users/login",
+			data: {
+				email,
+				password,
+			},
+		})
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
-		<UserContext.Provider value={{ user, doSignup }}>
+		<UserContext.Provider value={{ user, doSignup, doLogin }}>
 			{props.children}
 		</UserContext.Provider>
 	);
