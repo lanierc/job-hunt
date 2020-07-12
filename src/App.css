@@ -32,6 +32,13 @@
 	padding: 1.6rem 1.2rem;
 }
 
+.App > .navbar {
+	position: absolute;
+	right: 17.5%;
+	top: 5vh;
+	width: 20%;
+}
+
 h2 {
 	text-align: center;
 }
@@ -93,4 +100,21 @@ label {
 	color: #f2c5ca;
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+nav ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	list-style-type: none;
+}
+
+nav ul a {
+	text-decoration: none;
+	background: #de441c;
+	color: #f2c5ca;
+	padding: 10px 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-radius: 3px;
 }

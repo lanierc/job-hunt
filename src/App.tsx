@@ -5,6 +5,7 @@ import UserContextProvider from "./contexts/UserContext";
 import Signup from "./components/Signup";
 import logo from "./assets/logo.png";
 import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 			</div>
 			<UserContextProvider>
 				<Router>
+					<Navbar />
 					<div className="container">
 						<Route exact path="/" component={Home} />
 						<Route path="/signup" component={Signup} />
