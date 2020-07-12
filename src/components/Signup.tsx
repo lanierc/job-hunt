@@ -5,11 +5,19 @@ const Signup: React.FC = () => {
 	const [password, setPassword] = useState("");
 	const [verifyPassword, setVerifyPassword] = useState("");
 	const [name, setName] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [success, setSuccess] = useState(false);
+	const [error, setError] = useState("");
 
 	return (
 		<div className="signup">
 			<h2>Signup</h2>
-			<form>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					setLoading(true);
+				}}
+			>
 				<label htmlFor="email">Email Address:</label>
 				<input
 					type="email"
@@ -50,6 +58,7 @@ const Signup: React.FC = () => {
 					}}
 					value={name}
 				/>
+				<button type="submit">Signup</button>
 			</form>
 		</div>
 	);
