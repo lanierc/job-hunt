@@ -1,13 +1,20 @@
 import React, { useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 const Login: React.FC = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { doLogin } = useContext(UserContext);
 
 	return (
 		<div className="login">
 			<h2>Login</h2>
-			<form>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					doLogin(email, password);
+				}}
+			>
 				<div className="form-grid-container">
 					<div>
 						<label htmlFor="email">Email Address:</label>
@@ -24,7 +31,7 @@ const Login: React.FC = () => {
 					<div>
 						<label htmlFor="password">Password:</label>
 						<input
-							type="text"
+							type="password"
 							value={password}
 							onChange={(e) => {
 								setPassword(e.target.value);
