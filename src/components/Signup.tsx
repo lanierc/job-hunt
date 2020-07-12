@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 const Signup: React.FC = () => {
 	const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ const Signup: React.FC = () => {
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState("");
+	const { doSignup } = useContext(UserContext);
 
 	return (
 		<div className="signup">
@@ -16,6 +18,7 @@ const Signup: React.FC = () => {
 				onSubmit={(e) => {
 					e.preventDefault();
 					setLoading(true);
+					doSignup(email, password, verifyPassword, name);
 				}}
 			>
 				<label htmlFor="email">Email Address:</label>

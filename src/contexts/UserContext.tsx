@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import axios from "axios";
 
 interface IUser {
 	user: string;
@@ -31,7 +32,20 @@ const UserContextProvider: React.FC = (props) => {
 		verifyPassword: String,
 		name: String
 	): void => {
-		console.log(email, password, verifyPassword, name);
+		//check for matching password
+		if (password === verifyPassword) {
+			axios({
+				method: "POST",
+				url: "/api/users/signup",
+				data: {
+					email,
+					password,
+					name,
+				},
+			}).then((res: {}) => {
+				console.log(res);
+			});
+		}
 	};
 
 	return (
