@@ -27,47 +27,59 @@ const Signup: React.FC = () => {
 					setSuccess(true);
 				}}
 			>
-				<label htmlFor="email">Email Address:</label>
-				<input
-					type="email"
-					name="email"
-					placeholder="Email Address"
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-					value={email}
-				/>
-				<label htmlFor="password">Password:</label>
-				<input
-					type="password"
-					name="password"
-					placeholder="Password"
-					onChange={(e) => {
-						setPassword(e.target.value);
-					}}
-					value={password}
-				/>
-				<label htmlFor="verifyPassword">Verify Password:</label>
-				<input
-					type="password"
-					name="verifyPassword"
-					placeholder="Verify Password"
-					onChange={(e) => {
-						setVerifyPassword(e.target.value);
-					}}
-					value={verifyPassword}
-				/>
-				<label htmlFor="name">Name:</label>
-				<input
-					type="text"
-					name="name"
-					placeholder="Name"
-					onChange={(e) => {
-						setName(e.target.value);
-					}}
-					value={name}
-				/>
-				<button type="submit">Signup</button>
+				<div className="form-grid-container">
+					<div>
+						<label htmlFor="email">Email Address:</label>
+						<input
+							type="email"
+							name="email"
+							placeholder="Email Address"
+							onChange={(e) => {
+								setEmail(e.target.value);
+							}}
+							value={email}
+						/>
+					</div>
+					<div>
+						<label htmlFor="password">Password:</label>
+						<input
+							type="password"
+							name="password"
+							placeholder="Password"
+							onChange={(e) => {
+								setPassword(e.target.value);
+							}}
+							value={password}
+						/>
+					</div>
+					<div>
+						<label htmlFor="verifyPassword">Verify Password:</label>
+						<input
+							type="password"
+							name="verifyPassword"
+							placeholder="Verify Password"
+							onChange={(e) => {
+								setVerifyPassword(e.target.value);
+							}}
+							value={verifyPassword}
+						/>
+					</div>
+					<div>
+						<label htmlFor="name">Name:</label>
+						<input
+							type="text"
+							name="name"
+							placeholder="Name"
+							onChange={(e) => {
+								setName(e.target.value);
+							}}
+							value={name}
+						/>
+					</div>
+					<div>
+						<button type="submit">Signup</button>
+					</div>
+				</div>
 			</form>
 		</div>
 	);
