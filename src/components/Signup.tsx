@@ -14,11 +14,17 @@ const Signup: React.FC = () => {
 	return (
 		<div className="signup">
 			<h2>Signup</h2>
+			{success && (
+				<p>
+					<span className="success">Success!</span> Please log in.
+				</p>
+			)}
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
 					setLoading(true);
 					doSignup(email, password, verifyPassword, name);
+					setSuccess(true);
 				}}
 			>
 				<label htmlFor="email">Email Address:</label>
