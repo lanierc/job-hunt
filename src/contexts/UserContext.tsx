@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import axios from "axios";
-import { setToken } from "../services/tokenService";
+import { setToken, removeToken } from "../services/tokenService";
 
 interface IUser {
 	user: string | null;
@@ -14,6 +14,7 @@ interface IUser {
 		name: string
 	) => void;
 	doLogin: (email: string, password: string) => void;
+	doLogout: () => void;
 }
 
 export const UserContext = createContext<IUser>({
@@ -30,6 +31,9 @@ export const UserContext = createContext<IUser>({
 		return null;
 	},
 	doLogin: (email: string, password: string) => {
+		return null;
+	},
+	doLogout: () => {
 		return null;
 	},
 });
@@ -101,9 +105,15 @@ const UserContextProvider: React.FC = (props) => {
 			});
 	};
 
+	const doLogout = (): void => {
+		removeToken();
+		localStorage.removeItem("id");
+		setUser(null);
+	};
+
 	return (
 		<UserContext.Provider
-			value={{ user, doSignup, doLogin, error, loading, success }}
+			value={{ user, doSignup, doLogin, error, loading, success, doLogout }}
 		>
 			{props.children}
 		</UserContext.Provider>

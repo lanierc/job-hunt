@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 const Navbar: React.FC = () => {
-	const { user } = useContext(UserContext);
+	const { user, doLogout } = useContext(UserContext);
 
 	return (
 		<div className="navbar">
@@ -24,7 +24,12 @@ const Navbar: React.FC = () => {
 					)}
 					{user && (
 						<>
-							<button>
+							<button
+								onClick={(e) => {
+									e.preventDefault();
+									doLogout();
+								}}
+							>
 								<li>Logout</li>
 							</button>
 						</>

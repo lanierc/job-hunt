@@ -95,7 +95,8 @@ nav ul {
 	list-style-type: none;
 }
 
-nav ul a {
+nav ul a,
+nav ul button {
 	text-decoration: none;
 	background: #de441c;
 	color: #f2c5ca;
@@ -103,4 +104,5 @@ nav ul a {
 	font-weight: bold;
 	text-transform: uppercase;
 	border-radius: 3px;
+	border: 0;
 }
