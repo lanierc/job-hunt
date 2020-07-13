@@ -54,9 +54,8 @@ def create_job():
         'data': new_job
     })
 
+
 # edit a job
-
-
 @job_routes.route('/<id>', methods=['PUT'])
 def update_job(id):
     # get request data
@@ -76,4 +75,14 @@ def update_job(id):
     return jsonify({
         'status': 'success',
         'data': job
+    })
+
+
+# get all job apps for a user
+@job_routes.route('/<id>', methods=['GET'])
+def get_all_jobs(id):
+    jobs = Job.objects(user__iexact=id)
+    return jsonify({
+        'status': 'success',
+        'data': jobs
     })
