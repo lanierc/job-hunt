@@ -3,7 +3,7 @@ import axios from "axios";
 import { setToken } from "../services/tokenService";
 
 interface IUser {
-	user: string;
+	user: string | null;
 	success: boolean;
 	loading: boolean;
 	error: string;
@@ -17,7 +17,7 @@ interface IUser {
 }
 
 export const UserContext = createContext<IUser>({
-	user: "",
+	user: null,
 	success: false,
 	loading: false,
 	error: "",
@@ -35,7 +35,7 @@ export const UserContext = createContext<IUser>({
 });
 
 const UserContextProvider: React.FC = (props) => {
-	const [user, setUser] = useState("");
+	const [user, setUser] = useState(localStorage.getItem("id") || null);
 	const [success, setSuccess] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
