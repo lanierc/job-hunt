@@ -7,6 +7,7 @@ import logo from "./assets/logo.png";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import CreateJob from "./components/CreateJob";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 						<Route exact path="/" component={Home} />
 						<Route path="/signup" component={Signup} />
 						<Route path="/login" component={Login} />
+						<Route path="create-job" component={CreateJob} />
 					</div>
 				</Router>
 			</UserContextProvider>
