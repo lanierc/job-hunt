@@ -24,6 +24,9 @@ const Navbar: React.FC = () => {
 					)}
 					{user && (
 						<>
+							<Link to="/create-job">
+								<li>Create Job</li>
+							</Link>
 							<button
 								onClick={(e) => {
 									e.preventDefault();

@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import CreateJob from "./components/CreateJob";
+import JobContextProvider from "./contexts/JobContext";
 
 function App() {
 	return (
@@ -16,15 +17,17 @@ function App() {
 				<img src={logo} alt="Job Hunt Logo" />
 			</div>
 			<UserContextProvider>
-				<Router>
-					<Navbar />
-					<div className="container">
-						<Route exact path="/" component={Home} />
-						<Route path="/signup" component={Signup} />
-						<Route path="/login" component={Login} />
-						<Route path="create-job" component={CreateJob} />
-					</div>
-				</Router>
+				<JobContextProvider>
+					<Router>
+						<Navbar />
+						<div className="container">
+							<Route exact path="/" component={Home} />
+							<Route path="/signup" component={Signup} />
+							<Route path="/login" component={Login} />
+							<Route path="/create-job" component={CreateJob} />
+						</div>
+					</Router>
+				</JobContextProvider>
 			</UserContextProvider>
 		</div>
 	);
