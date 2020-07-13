@@ -85,11 +85,19 @@ const UserContextProvider: React.FC = (props) => {
 				password,
 			},
 		})
-			.then((res) => {
-				console.log(res);
+			.then((res: any) => {
+				const { token } = res.data;
+				const id = res.data.data._id.$oid;
+				setToken(token);
+				localStorage.setItem("id", id);
+				setUser(id);
+				setLoading(false);
+				setSuccess(true);
 			})
 			.catch((err) => {
 				console.log(err);
+				setLoading(false);
+				setError("Invalid username or password.");
 			});
 	};
 
