@@ -8,10 +8,10 @@
 }
 
 .App .logo {
-	width: 175px;
+	width: 125px;
 	position: absolute;
 	top: 3vh;
-	left: 3%;
+	left: 17.5%;
 }
 
 .App .logo img {
@@ -28,8 +28,10 @@
 	top: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 5px;
-	border: 3px solid #80d019;
+	box-shadow: 0px 0px 0px 5px #165bff, 0px 0px 0px 10px #ff0b01,
+		0px 0px 0px 15px #0bff25;
 	padding: 1.6rem 1.2rem;
+	overflow-y: scroll;
 }
 
 .App > .navbar {
@@ -43,27 +45,9 @@ h2 {
 	text-align: center;
 }
 
-/*.App > .container::before {*/
-/*content: " ";*/
-/*position: absolute;*/
-/*top: 0;*/
-/*bottom: 0;*/
-/*left: 0;*/
-/*right: 0;*/
-/*border-radius: 5px;*/
-/*border: 3px solid #7e2203;*/
-/*}*/
-
-/*.App > .container::after {*/
-/*content: " ";*/
-/*position: absolute;*/
-/*top: 3px;*/
-/*bottom: 3px;*/
-/*left: 3px;*/
-/*right: 3px;*/
-/*border-radius: 5px;*/
-/*border: 3px solid #5181e6;*/
-/*}*/
+fieldset {
+	border: 0;
+}
 
 .App > .container div {
 	z-index: 10;

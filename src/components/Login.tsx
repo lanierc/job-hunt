@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 const Login: React.FC = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { doLogin } = useContext(UserContext);
+	const { doLogin, success, loading, error } = useContext(UserContext);
 
 	return (
 		<div className="login">
@@ -15,35 +15,37 @@ const Login: React.FC = () => {
 					doLogin(email, password);
 				}}
 			>
-				<div className="form-grid-container">
-					<div>
-						<label htmlFor="email">Email Address:</label>
-						<input
-							type="text"
-							value={email}
-							onChange={(e) => {
-								setEmail(e.target.value);
-							}}
-							name="email"
-							placeholder="Email Address"
-						/>
+				<fieldset disabled={loading}>
+					<div className="form-grid-container">
+						<div>
+							<label htmlFor="email">Email Address:</label>
+							<input
+								type="text"
+								value={email}
+								onChange={(e) => {
+									setEmail(e.target.value);
+								}}
+								name="email"
+								placeholder="Email Address"
+							/>
+						</div>
+						<div>
+							<label htmlFor="password">Password:</label>
+							<input
+								type="password"
+								value={password}
+								onChange={(e) => {
+									setPassword(e.target.value);
+								}}
+								name="password"
+								placeholder="Password"
+							/>
+						</div>
+						<div>
+							<button type="submit">Login</button>
+						</div>
 					</div>
-					<div>
-						<label htmlFor="password">Password:</label>
-						<input
-							type="password"
-							value={password}
-							onChange={(e) => {
-								setPassword(e.target.value);
-							}}
-							name="password"
-							placeholder="Password"
-						/>
-					</div>
-					<div>
-						<button type="submit">Login</button>
-					</div>
-				</div>
+				</fieldset>
 			</form>
 		</div>
 	);

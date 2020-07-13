@@ -1,8 +1,12 @@
 import React, { useState, createContext, useEffect } from "react";
 import axios from "axios";
+import { setToken } from "../services/tokenService";
 
 interface IUser {
 	user: string;
+	success: boolean;
+	loading: boolean;
+	error: string;
 	doSignup: (
 		email: string,
 		password: string,
@@ -14,6 +18,9 @@ interface IUser {
 
 export const UserContext = createContext<IUser>({
 	user: "",
+	success: false,
+	loading: false,
+	error: "",
 	doSignup: (
 		email: string,
 		password: string,
@@ -29,6 +36,9 @@ export const UserContext = createContext<IUser>({
 
 const UserContextProvider: React.FC = (props) => {
 	const [user, setUser] = useState("");
+	const [success, setSuccess] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState("");
 
 	const doSignup = (
 		email: string,
@@ -36,6 +46,8 @@ const UserContextProvider: React.FC = (props) => {
 		verifyPassword: string,
 		name: string
 	): void => {
+		setLoading(true);
+		setError("");
 		//check for matching password
 		if (password === verifyPassword) {
 			axios({
@@ -46,13 +58,25 @@ const UserContextProvider: React.FC = (props) => {
 					password,
 					name,
 				},
-			}).then((res: {}) => {
-				console.log(res);
-			});
+			})
+				.then((res: {}) => {
+					console.log(res);
+					setLoading(false);
+					setSuccess(true);
+				})
+				.catch((err: {}) => {
+					setLoading(false);
+					setError("User already exists");
+				});
+		} else {
+			setLoading(false);
+			setError("Passwords do not match.");
 		}
 	};
 
 	const doLogin = (email: string, password: string): void => {
+		setLoading(true);
+		setError("");
 		axios({
 			method: "POST",
 			url: "/api/users/login",
@@ -70,7 +94,9 @@ const UserContextProvider: React.FC = (props) => {
 	};
 
 	return (
-		<UserContext.Provider value={{ user, doSignup, doLogin }}>
+		<UserContext.Provider
+			value={{ user, doSignup, doLogin, error, loading, success }}
+		>
 			{props.children}
 		</UserContext.Provider>
 	);
