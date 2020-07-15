@@ -17,7 +17,21 @@ const CreateJob: React.FC = () => {
 	return (
 		<div className="create-job">
 			<h2>Create a Job Application</h2>
-			<form>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					addJob(
+						title,
+						company,
+						datePosted,
+						dateApplied,
+						direct,
+						postingUrl,
+						contactName,
+						contactEmail
+					);
+				}}
+			>
 				<fieldset>
 					<div className="job-form-grid-container">
 						<div>

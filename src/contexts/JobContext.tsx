@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
+import axios from "axios";
+import { UserContext } from "./UserContext";
 
 interface IJobContext {
 	loading: boolean;
@@ -8,7 +10,7 @@ interface IJobContext {
 		title: string,
 		company: string,
 		datePosted: Date | null,
-		dateApplied: Date,
+		dateApplied: Date | null,
 		direct: boolean,
 		postingUrl: string,
 		contactName: string,
@@ -24,7 +26,7 @@ export const JobContext = createContext<IJobContext>({
 		title: string,
 		company: string,
 		datePosted: Date | null,
-		dateApplied: Date,
+		dateApplied: Date | null,
 		direct: boolean,
 		postingUrl: string,
 		contactName: string,
@@ -38,18 +40,46 @@ const JobContextProvider: React.FC = (props) => {
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState("");
+	const { user } = useContext(UserContext);
 
 	const addJob = (
 		title: string,
 		company: string,
 		datePosted: Date | null,
-		dateApplied: Date,
+		dateApplied: Date | null,
 		direct: boolean,
 		postingUrl: string,
 		contactName: string,
 		contactEmail: string
 	): void => {
-		console.log(title);
+		setLoading(true);
+		setError("");
+		setSuccess(false);
+		axios({
+			method: "POST",
+			url: "/api/jobs",
+			data: {
+				title,
+				company,
+				date_posted: datePosted,
+				date_applied: dateApplied,
+				direct_posting: direct,
+				posting_url: postingUrl,
+				contact_name: contactName,
+				contact_email: contactEmail,
+				user,
+			},
+		})
+			.then((res: any) => {
+				console.log(res);
+				setLoading(false);
+				setSuccess(true);
+			})
+			.catch((err: any) => {
+				console.log(err);
+				setLoading(false);
+				setError("Unable to add job.");
+			});
 	};
 
 	return (
