@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import DatePicker from "react-datepicker";
+import { JobContext } from "../contexts/JobContext";
 
 const CreateJob: React.FC = () => {
+	const { loading, success, error, addJob } = useContext(JobContext);
 	const [title, setTitle] = useState("");
 	const [company, setCompany] = useState("");
-	const [datePosted, setDatePosted] = useState<Date | null>(new Date());
+	const [datePosted, setDatePosted] = useState<Date | null>(null);
 	const [dateApplied, setDateApplied] = useState<Date | null>(
 		new Date(Date.now())
 	);
@@ -47,6 +49,8 @@ const CreateJob: React.FC = () => {
 								onChange={(date) => {
 									setDatePosted(date);
 								}}
+								isClearable
+								calendarClassName="calendar"
 							/>
 						</div>
 						<div>
@@ -56,6 +60,8 @@ const CreateJob: React.FC = () => {
 								onChange={(date) => {
 									setDateApplied(date);
 								}}
+								isClearable
+								calendarClassName="calendar"
 							/>
 						</div>
 						<div>

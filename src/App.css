@@ -80,6 +80,10 @@ fieldset {
 	width: 100%;
 }
 
+.calendar {
+	display: none !important;
+}
+
 .job-form-grid-container input[type="checkbox"] {
 	margin-left: 15px;
 }
