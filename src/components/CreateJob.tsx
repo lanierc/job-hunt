@@ -17,7 +17,7 @@ const CreateJob: React.FC = () => {
 			<h2>Create a Job Application</h2>
 			<form>
 				<fieldset>
-					<div className="job-form-grid-wrapper">
+					<div className="job-form-grid-container">
 						<div>
 							<label htmlFor="title">Job Title:</label>
 							<input
