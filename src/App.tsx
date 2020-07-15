@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
+import "react-datepicker/dist/react-datepicker.css";
 import UserContextProvider from "./contexts/UserContext";
 import Signup from "./components/Signup";
 import logo from "./assets/logo.png";
