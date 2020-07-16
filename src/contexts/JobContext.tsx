@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "./UserContext";
 
@@ -40,8 +40,16 @@ const JobContextProvider: React.FC = (props) => {
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState("");
+	const [jobs, setJobs] = useState([]);
 	const { user } = useContext(UserContext);
 
+	const fetchData = (): void => {
+		if (user) {
+			axios.get(`/api/jobs/${user}`).then((res: any) => {
+				setJobs(res.data.data);
+			});
+		}
+	};
 	const addJob = (
 		title: string,
 		company: string,
