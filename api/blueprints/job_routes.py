@@ -29,15 +29,11 @@ class Job(me.Document):
     direct_posting = me.BooleanField(required=True, default=False)
     contact_name = me.StringField(required=False)
     contact_email = me.StringField(required=True)
-    active = me.BooleanField(required=True, default=True)
-    feedback = me.StringField(required=False)
-    ghosted = me.BooleanField(required=False)
-    user = me.ReferenceField(User, required=True)
-    scam = me.BooleanField(required=False)
-    positive = me.BooleanField(required=False)
-
+    status = me.StringField(require=True, default='Active', choices=JOB_STATUS)
 
 # create a job
+
+
 @job_routes.route('', methods=['POST'])
 def create_job():
     post_data = request.get_json()
