@@ -140,3 +140,28 @@ nav ul button {
 	font-weight: bold;
 	background-color: #ddd;
 }
+
+.active {
+	background: #fff;
+}
+
+.positive {
+	background: #d9ead3;
+}
+
+.rejected {
+	background: #ead1dc;
+}
+
+.scam {
+	background: #000;
+	color: #fff;
+}
+
+.ghosted {
+	background: #d9d2e9;
+}
+
+.rejected-later {
+	background: #fef2cc;
+}
