@@ -133,6 +133,7 @@ nav ul button {
 
 .job-grid-row div {
 	padding: 5px 7px;
+	border: 1px solid black;
 }
 
 .job-grid-header {
