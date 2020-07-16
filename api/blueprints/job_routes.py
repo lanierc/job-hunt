@@ -90,6 +90,16 @@ def get_all_jobs(id):
     })
 
 
+# get a single job
+@job_routes.route('/job/<id>', methods=['GET'])
+def get_single_job(id):
+    job = Job.objects.get(pk=id)
+    return jsonify({
+        'status': 'success',
+        'data': job
+    })
+
+
 # delete a job
 @job_routes.route('/<id>', methods=['DELETE'])
 def delete_job(id):
