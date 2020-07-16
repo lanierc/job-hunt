@@ -1,12 +1,20 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { JobContext } from "../contexts/JobContext";
+import Jobs from "./Jobs";
 
 const Home: React.FC = () => {
 	const { user } = useContext(UserContext);
+	const { jobs } = useContext(JobContext);
 	if (user) {
 		return (
 			<div className="home">
-				<h2>Home</h2>
+				<h2>Your Applications</h2>
+				<div className="job-grid-container">
+					{jobs.map((job) => (
+						<Jobs key={job._id.$oid} job={job} />
+					))}
+				</div>
 			</div>
 		);
 	}
