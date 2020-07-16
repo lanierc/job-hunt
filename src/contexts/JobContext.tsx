@@ -43,13 +43,17 @@ const JobContextProvider: React.FC = (props) => {
 	const [jobs, setJobs] = useState([]);
 	const { user } = useContext(UserContext);
 
-	const fetchData = (): void => {
-		if (user) {
+	useEffect((): void => {
+		const fetchData = (): void => {
 			axios.get(`/api/jobs/${user}`).then((res: any) => {
 				setJobs(res.data.data);
 			});
+		};
+		if (user) {
+			fetchData();
 		}
-	};
+	}, [user]);
+
 	const addJob = (
 		title: string,
 		company: string,
