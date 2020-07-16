@@ -15,9 +15,11 @@ secret = os.getenv('SECRET')
 # defining blueprint
 job_routes = Blueprint('job_routes', __name__)
 
+# create enum for job status
+JOB_STATUS = ('Active', 'Positive', 'Rejected', 'Failed', 'Ghosted', 'Scam')
+
+
 # create user model
-
-
 class Job(me.Document):
     title = me.StringField(required=True)
     company = me.StringField(required=True)
