@@ -30,6 +30,7 @@ class Job(me.Document):
     contact_name = me.StringField(required=False)
     contact_email = me.StringField(required=True)
     status = me.StringField(require=True, default='Active', choices=JOB_STATUS)
+    user = me.ReferenceField(User)
 
 # create a job
 
