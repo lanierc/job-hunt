@@ -1,10 +1,15 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { Redirect } from "react-router-dom";
 
 const Login: React.FC = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { doLogin, success, loading, error } = useContext(UserContext);
+
+	if (success) {
+		return <Redirect to="/" />;
+	}
 
 	return (
 		<div className="login">
