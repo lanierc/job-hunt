@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import CreateJob from "./components/CreateJob";
 import JobContextProvider from "./contexts/JobContext";
+import Job from "./components/Job";
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 							<Route path="/signup" component={Signup} />
 							<Route path="/login" component={Login} />
 							<Route path="/create-job" component={CreateJob} />
+							<Route path="/jobs/:id" component={Job} />
 						</div>
 					</Router>
 				</JobContextProvider>
