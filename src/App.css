@@ -125,3 +125,17 @@ nav ul button {
 	border-radius: 3px;
 	border: 0;
 }
+
+.job-grid-row {
+	display: grid;
+	grid-template-columns: 2.5fr 2.5fr repeat(2, 1fr) 0.7fr 0.5fr;
+}
+
+.job-grid-row div {
+	padding: 5px 7px;
+}
+
+.job-grid-header {
+	font-weight: bold;
+	background-color: #ddd;
+}

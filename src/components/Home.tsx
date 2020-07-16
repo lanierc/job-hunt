@@ -11,6 +11,14 @@ const Home: React.FC = () => {
 			<div className="home">
 				<h2>Your Applications</h2>
 				<div className="job-grid-container">
+					<div className="job-grid-row job-grid-header">
+						<div>Job Title</div>
+						<div>Company</div>
+						<div>Date Posted</div>
+						<div>Date Applied</div>
+						<div>Status</div>
+						<div>Details</div>
+					</div>
 					{jobs.map((job) => (
 						<Jobs key={job._id.$oid} job={job} />
 					))}
