@@ -32,6 +32,7 @@ class Job(me.Document):
     ghosted = me.BooleanField(required=False)
     user = me.ReferenceField(User, required=True)
     scam = me.BooleanField(required=False)
+    positive = me.BooleanField(required=False)
 
 
 # create a job
