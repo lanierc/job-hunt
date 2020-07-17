@@ -117,7 +117,8 @@ label {
 
 .form-grid-container button,
 .edit-job-grid-container .btn-row button,
-.job-form-grid-container .btn-row button {
+.job-form-grid-container .btn-row button,
+.single-job button {
 	border-radius: 3px;
 	border: 0;
 	padding: 10px 15px;
@@ -188,4 +189,16 @@ nav ul button {
 
 .rejected-later {
 	background: #fef2cc;
+}
+
+.modal {
+	width: 30%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: white;
+	padding: 10px 25px 25px;
+	border: 1px solid black;
+	box-shadow: 0px 0px 54px 0px rgba(0, 0, 0, 0.75);
 }

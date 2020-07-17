@@ -9,7 +9,8 @@ const Job: React.FC = () => {
 	const [job, setJob] = useState<any>({});
 	const [edit, setEdit] = useState(false);
 	const [modal, setModal] = useState(false);
-	const { success, fetchData: fetchGlobalData } = useContext(JobContext);
+	const [success, setSuccess] = useState(false);
+	const { fetchData: fetchGlobalData } = useContext(JobContext);
 
 	const fetchData = () => {
 		axios.get(`/api/jobs/job/${id}`).then((res: any) => {
@@ -70,9 +71,20 @@ const Job: React.FC = () => {
 				<div className="modal">
 					<h3>Confirm deletion</h3>
 					<p>Are you sure you want to delete this job?</p>
-					<button>Yes</button>{" "}
 					<button
-						onSubmit={(e) => {
+						onClick={(e) => {
+							e.preventDefault();
+							axios.delete(`/api/jobs/${id}`).then((res: any) => {
+								fetchGlobalData();
+								setSuccess(true);
+							});
+						}}
+					>
+						Yes
+					</button>{" "}
+					<button
+						className="btn-cancel"
+						onClick={(e) => {
 							e.preventDefault();
 							setModal(false);
 						}}
@@ -123,6 +135,7 @@ const Job: React.FC = () => {
 				Edit Job
 			</button>{" "}
 			<button
+				className="btn-cancel"
 				onClick={(e) => {
 					e.preventDefault();
 					setModal(true);
