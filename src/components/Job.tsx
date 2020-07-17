@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { JobContext } from "../contexts/JobContext";
+import EditJob from "./EditJob";
 
 const Job: React.FC = () => {
 	const id: string = window.location.pathname.replace("/jobs/", "");
@@ -41,6 +42,25 @@ const Job: React.FC = () => {
 
 	if (success) {
 		return <Redirect to="/" />;
+	}
+
+	if (edit) {
+		return (
+			<EditJob
+				title={job.title}
+				company={job.company}
+				datePosted={dt1 || null}
+				dateApplied={dt2 || null}
+				contactName={job.contact_name}
+				contactEmail={job.contact_email}
+				postingUrl={job.posting_url}
+				directPosting={job.direct_posting}
+				status={job.status}
+				feedback={job.feedback || ""}
+				setEdit={setEdit}
+				fetchData={fetchData}
+			/>
+		);
 	}
 
 	return (
