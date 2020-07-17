@@ -16,10 +16,11 @@ interface IEditProps {
 	feedback: string;
 	setEdit(arg0: boolean): any;
 	fetchData: () => void;
+	id: string;
 }
 
 const EditJob = (props: IEditProps) => {
-	const { fetchData, setEdit } = props;
+	const { fetchData, setEdit, id } = props;
 	const { fetchData: fetchGlobalData } = useContext(JobContext);
 	const possibleStatus: Array<string> = [
 		"Active",
@@ -43,7 +44,35 @@ const EditJob = (props: IEditProps) => {
 	return (
 		<div className="edit-job">
 			<h2>Edit Job</h2>
-			<form>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					axios({
+						method: "PUT",
+						url: `/api/jobs/${id}`,
+						data: {
+							title,
+							company,
+							status,
+							feedback,
+							date_posted: datePosted,
+							date_applied: dateApplied,
+							direct_posting: directPosting,
+							posting_url: postingUrl,
+							contact_name: contactName,
+							contact_email: contactEmail,
+						},
+					}).then((res: any) => {
+						console.log(res);
+						//refetch the job
+						fetchData();
+						//refetch all jobs
+						fetchGlobalData();
+						//return to main component
+						setEdit(false);
+					});
+				}}
+			>
 				<fieldset>
 					<div className="edit-job-grid-container">
 						<div>
@@ -89,9 +118,9 @@ const EditJob = (props: IEditProps) => {
 						<div className="status-container">
 							<label htmlFor="status">Application Status:</label>
 							<div className="status-flex">
-								{possibleStatus.map((statusType: string) => {
+								{possibleStatus.map((statusType: string, index: number) => {
 									return (
-										<label htmlFor="status-option">
+										<label htmlFor="status-option" key={index}>
 											<input
 												type="radio"
 												value={statusType}

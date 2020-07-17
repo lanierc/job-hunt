@@ -23,7 +23,7 @@ const Job: React.FC = () => {
 
 	let dt1: Date | null = null;
 	let dt2: Date | null = null;
-	if (job.date_posted !== undefined) {
+	if (job.date_posted !== undefined && job.date_posted !== null) {
 		dt1 = new Date(job.date_posted.$date);
 	}
 	if (job.date_applied !== undefined) {
@@ -59,6 +59,7 @@ const Job: React.FC = () => {
 				feedback={job.feedback || ""}
 				setEdit={setEdit}
 				fetchData={fetchData}
+				id={id}
 			/>
 		);
 	}

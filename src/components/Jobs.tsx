@@ -8,7 +8,7 @@ interface IJobProps {
 const Jobs = (props: IJobProps) => {
 	let dt1: Date | null = null;
 	let dt2: Date | null = null;
-	if (props.job.date_posted !== undefined) {
+	if (props.job.date_posted !== undefined && props.job.date_posted !== null) {
 		dt1 = new Date(props.job.date_posted.$date);
 	}
 	if (props.job.date_applied !== undefined) {

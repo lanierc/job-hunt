@@ -29,8 +29,10 @@ class Job(me.Document):
     direct_posting = me.BooleanField(required=True, default=False)
     contact_name = me.StringField(required=False)
     contact_email = me.StringField(required=True)
-    status = me.StringField(require=True, default='Active', choices=JOB_STATUS)
+    status = me.StringField(
+        required=True, default='Active', choices=JOB_STATUS)
     user = me.ReferenceField(User)
+    feedback = me.StringField(default="", required=True)
 
 
 # create a job
