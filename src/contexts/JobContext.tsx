@@ -91,6 +91,7 @@ const JobContextProvider: React.FC = (props) => {
 		})
 			.then((res: any) => {
 				console.log(res);
+				fetchData();
 				setLoading(false);
 				setSuccess(true);
 			})

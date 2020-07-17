@@ -30,6 +30,14 @@ const CreateJob: React.FC = () => {
 						contactName,
 						contactEmail
 					);
+					setTitle("");
+					setCompany("");
+					setDatePosted(null);
+					setDateApplied(new Date(Date.now()));
+					setDirect(false);
+					setPostingUrl("");
+					setContactName("");
+					setContactEmail("");
 				}}
 			>
 				<fieldset>
