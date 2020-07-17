@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
+import { JobContext } from "../contexts/JobContext";
 
 const Job: React.FC = () => {
 	const id: string = window.location.pathname.replace("/jobs/", "");
 	const [job, setJob] = useState<any>({});
+	const [edit, setEdit] = useState(false);
+	const [modal, setModal] = useState(false);
+	const { success } = useContext(JobContext);
 
 	const fetchData = () => {
 		axios.get(`/api/jobs/job/${id}`).then((res: any) => {
@@ -34,8 +39,27 @@ const Job: React.FC = () => {
 	const datePostedArr: Array<string> | null = datePosted.split(",") || null;
 	const dateAppliedArr: Array<string> = dateApplied.split(",");
 
+	if (success) {
+		return <Redirect to="/" />;
+	}
+
 	return (
 		<div className="single-job">
+			{modal && (
+				<div className="modal">
+					<h3>Confirm deletion</h3>
+					<p>Are you sure you want to delete this job?</p>
+					<button>Yes</button>{" "}
+					<button
+						onSubmit={(e) => {
+							e.preventDefault();
+							setModal(false);
+						}}
+					>
+						No
+					</button>
+				</div>
+			)}
 			<h2>
 				{job.title} @ {job.company}
 			</h2>
@@ -69,6 +93,22 @@ const Job: React.FC = () => {
 			<p>
 				<span>Feedback:</span> {job.feedback && job.feedback}
 			</p>
+			<button
+				onClick={(e) => {
+					e.preventDefault();
+					setEdit(true);
+				}}
+			>
+				Edit Job
+			</button>{" "}
+			<button
+				onClick={(e) => {
+					e.preventDefault();
+					setModal(true);
+				}}
+			>
+				Delete Job
+			</button>
 		</div>
 	);
 };
