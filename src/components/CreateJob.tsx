@@ -17,6 +17,16 @@ const CreateJob: React.FC = () => {
 	return (
 		<div className="create-job">
 			<h2>Create a Job Application</h2>
+			{success && (
+				<p>
+					<span className="success">Success!</span> Job published to tracker!
+				</p>
+			)}
+			{error && (
+				<p>
+					<span className="error">Error:</span> {error}
+				</p>
+			)}
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();

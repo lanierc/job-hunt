@@ -6,10 +6,24 @@ import Jobs from "./Jobs";
 const Home: React.FC = () => {
 	const { user } = useContext(UserContext);
 	const { jobs } = useContext(JobContext);
+	let activeCount: number = 0;
+	const jobCount: number = jobs.length;
+	jobs.forEach((job) => {
+		if (job.status === "Active" || job.status === "Positive") {
+			activeCount += 1;
+		}
+	});
+	const rejectionRate: number = Math.round(
+		((jobCount - activeCount) / jobCount) * 100
+	);
 	if (user) {
 		return (
 			<div className="home">
 				<h2>Your Applications</h2>
+				<h4>
+					Jobs Applied: {jobCount} | Positive Responses: {activeCount} |
+					Rejection Rate: {rejectionRate}%
+				</h4>
 				<div className="job-grid-container">
 					<div className="job-grid-row job-grid-header">
 						<div>Job Title</div>
