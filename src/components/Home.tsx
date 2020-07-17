@@ -7,10 +7,14 @@ const Home: React.FC = () => {
 	const { user } = useContext(UserContext);
 	const { jobs } = useContext(JobContext);
 	let activeCount: number = 0;
+	let positiveCount: number = 0;
 	const jobCount: number = jobs.length;
 	jobs.forEach((job) => {
 		if (job.status === "Active" || job.status === "Positive") {
 			activeCount += 1;
+		}
+		if (job.status === "Positive") {
+			positiveCount += 1;
 		}
 	});
 	const rejectionRate: number = Math.round(
@@ -21,8 +25,8 @@ const Home: React.FC = () => {
 			<div className="home">
 				<h2>Your Applications</h2>
 				<h4>
-					Jobs Applied: {jobCount} | Positive Responses: {activeCount} |
-					Rejection Rate: {rejectionRate}%
+					Jobs Applied: {jobCount} | Active Applications: {activeCount} |
+					Positive Responses: {positiveCount} | Rejection Rate: {rejectionRate}%
 				</h4>
 				<div className="job-grid-container">
 					<div className="job-grid-row job-grid-header">
