@@ -12,7 +12,7 @@ load_dotenv()
 mongodb_uri = os.getenv('MONGODB_URI')
 
 # TODO: Set to false in production
-DEBUG = False
+DEBUG = True
 
 # Creating flask instance for routing
 app = Flask(__name__)
