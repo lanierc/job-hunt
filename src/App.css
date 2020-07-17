@@ -62,19 +62,35 @@ fieldset {
 	grid-gap: 15px;
 }
 
-.job-form-grid-container {
+.job-form-grid-container,
+.edit-job-grid-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 15px;
 }
 
 .form-grid-container input,
-.job-form-grid-container input:not([type="checkbox"]) {
+.job-form-grid-container input:not([type="checkbox"]),
+.edit-job-grid-container input:not([type="checkbox"]):not([type="radio"]) {
 	width: 100%;
 	border: 0;
 	border-bottom: 2px solid #000;
 	padding: 5px 10px;
 	transition: all 0.3s ease-in-out;
+}
+
+.status-container,
+.feedback-container {
+	grid-column: 1 / span 2;
+}
+
+.status-flex {
+	display: flex;
+	justify-content: space-around;
+}
+
+.status-flex label {
+	display: inline-block;
 }
 
 .react-datepicker-wrapper {
@@ -85,7 +101,8 @@ fieldset {
 	display: none !important;
 }
 
-.job-form-grid-container input[type="checkbox"] {
+.job-form-grid-container input[type="checkbox"],
+.edit-job-grid-container input[type="checkbox"] {
 	margin-left: 15px;
 }
 
@@ -98,7 +115,9 @@ label {
 	padding-bottom: 10px;
 }
 
-.form-grid-container button {
+.form-grid-container button,
+.edit-job-grid-container .btn-row button,
+.job-form-grid-container .btn-row button {
 	border-radius: 3px;
 	border: 0;
 	padding: 10px 15px;
@@ -106,6 +125,10 @@ label {
 	color: #f2c5ca;
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+.btn-cancel {
+	margin-left: 10px;
 }
 
 nav ul {

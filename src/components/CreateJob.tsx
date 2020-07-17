@@ -130,7 +130,7 @@ const CreateJob: React.FC = () => {
 								onChange={(e) => setContactName(e.target.value)}
 							/>
 						</div>
-						<div>
+						<div className="btn-row">
 							<label htmlFor="contactEmail">Contact Email:</label>
 							<input
 								type="text"
