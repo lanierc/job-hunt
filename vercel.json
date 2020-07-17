@@ -1,0 +1,23 @@
+{
+  "alias": "job-hunt",
+  "name": "job-hunt",
+  "env": {
+    "PORT": "4000",
+    "SECRET": "@secret_jh",
+    "MONGODB_URI": "@mongodb_uri_jh"
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "index.html"
+    },
+    {
+      "src": "/api/jobs/(.+)",
+      "dest": "/api/jobs.py"
+    },
+    {
+      "src": "/api/users/(.+)",
+      "dest": "/api/users.py"
+    }
+  ]
+}
