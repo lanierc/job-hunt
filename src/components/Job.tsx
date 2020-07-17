@@ -9,7 +9,7 @@ const Job: React.FC = () => {
 	const [job, setJob] = useState<any>({});
 	const [edit, setEdit] = useState(false);
 	const [modal, setModal] = useState(false);
-	const { success } = useContext(JobContext);
+	const { success, fetchData: fetchGlobalData } = useContext(JobContext);
 
 	const fetchData = () => {
 		axios.get(`/api/jobs/job/${id}`).then((res: any) => {

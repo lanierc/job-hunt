@@ -17,6 +17,7 @@ interface IJobContext {
 		contactEmail: string
 	) => void;
 	jobs: Array<any>;
+	fetchData: () => void;
 }
 
 export const JobContext = createContext<IJobContext>({
@@ -36,6 +37,9 @@ export const JobContext = createContext<IJobContext>({
 		return null;
 	},
 	jobs: [],
+	fetchData: () => {
+		return null;
+	},
 });
 
 const JobContextProvider: React.FC = (props) => {
@@ -102,7 +106,9 @@ const JobContextProvider: React.FC = (props) => {
 	};
 
 	return (
-		<JobContext.Provider value={{ loading, success, error, addJob, jobs }}>
+		<JobContext.Provider
+			value={{ loading, success, error, addJob, jobs, fetchData }}
+		>
 			{props.children}
 		</JobContext.Provider>
 	);
