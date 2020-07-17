@@ -5,7 +5,7 @@ from flask_mongoengine import MongoEngine
 import os
 
 # import blueprints
-from _blueprints.user_routes import user_routes
+from ._blueprints.user_routes import user_routes
 
 # Loading environmentals
 load_dotenv()
