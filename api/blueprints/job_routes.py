@@ -32,9 +32,8 @@ class Job(me.Document):
     status = me.StringField(require=True, default='Active', choices=JOB_STATUS)
     user = me.ReferenceField(User)
 
+
 # create a job
-
-
 @job_routes.route('', methods=['POST'])
 def create_job():
     post_data = request.get_json()
@@ -68,10 +67,12 @@ def update_job(id):
         "set__company": post_data.get('company'),
         "set__contact_name": post_data.get('contact_name'),
         "set__contact_email": post_data.get('contact_email'),
-        "set__active": post_data.get('active'),
-        "set__ghosted": post_data.get('ghosted'),
+        "set__posting_url": post_data.get('posting_url'),
+        "set__direct_posting": post_data.get('direct_posting'),
+        "set__status": post_data.get('status'),
         "set__feedback": post_data.get('feedback'),
-        "set__scam": post_data.get('scam')
+        "set__date_posted": post_data.get('date_posted'),
+        "set__date_applied": post_data.get('date_applied')
     })
     return jsonify({
         'status': 'success',
