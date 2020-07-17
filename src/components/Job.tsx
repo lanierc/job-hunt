@@ -34,47 +34,43 @@ const Job: React.FC = () => {
 	const datePostedArr: Array<string> | null = datePosted.split(",") || null;
 	const dateAppliedArr: Array<string> = dateApplied.split(",");
 
-	if (job !== undefined) {
-		return (
-			<div className="single-job">
-				<h2>
-					{job.title} @ {job.company}
-				</h2>
-				<p>
-					<span>Date Posted:</span> {dt1 && datePostedArr[0]}
-				</p>
-				<p>
-					<span>Date Applied:</span> {dateAppliedArr[0]}
-				</p>
-				<p>
-					<span>Job Posting:</span>{" "}
-					{!job.direct_posting ? (
-						<a href={job.posting_url} target="_blank">
-							Go to Posting
-						</a>
-					) : (
-						"Direct Referral"
-					)}
-				</p>
-				<p>
-					<span>Contact:</span>{" "}
-					{job.contact_email !== "" ? (
-						<a href={`mailto:${job.contact_email}`}>{job.contact_name}</a>
-					) : job.contact_name !== "" ? (
-						job.contact_name
-					) : null}
-				</p>
-				<p>
-					<span>Status:</span> {job.status}
-				</p>
-				<p>
-					<span>Feedback:</span> {job.feedback && job.feedback}
-				</p>
-			</div>
-		);
-	}
-
-	return null;
+	return (
+		<div className="single-job">
+			<h2>
+				{job.title} @ {job.company}
+			</h2>
+			<p>
+				<span>Date Posted:</span> {dt1 && datePostedArr[0]}
+			</p>
+			<p>
+				<span>Date Applied:</span> {dateAppliedArr[0]}
+			</p>
+			<p>
+				<span>Job Posting:</span>{" "}
+				{!job.direct_posting ? (
+					<a href={job.posting_url} target="_blank">
+						Go to Posting
+					</a>
+				) : (
+					"Direct Referral"
+				)}
+			</p>
+			<p>
+				<span>Contact:</span>{" "}
+				{job.contact_email !== "" ? (
+					<a href={`mailto:${job.contact_email}`}>{job.contact_name}</a>
+				) : job.contact_name !== "" ? (
+					job.contact_name
+				) : null}
+			</p>
+			<p>
+				<span>Status:</span> {job.status}
+			</p>
+			<p>
+				<span>Feedback:</span> {job.feedback && job.feedback}
+			</p>
+		</div>
+	);
 };
 
 export default Job;
