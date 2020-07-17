@@ -31,4 +31,5 @@ db.init_app(app)
 # register routes
 app.register_blueprint(job_routes, url_prefix='/api/jobs')
 
-app.run()
+if __name__ == '__main__':
+	app.run()
