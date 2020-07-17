@@ -6,7 +6,7 @@ import jwt
 from dotenv import load_dotenv
 import os
 import datetime
-from blueprints.user_routes import User
+from _blueprints.user_routes import User
 
 # loading app secret
 load_dotenv()

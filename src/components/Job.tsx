@@ -75,6 +75,7 @@ const Job: React.FC = () => {
 						onClick={(e) => {
 							e.preventDefault();
 							axios.delete(`/api/jobs/${id}`).then((res: any) => {
+								console.log(res);
 								fetchGlobalData();
 								setSuccess(true);
 							});

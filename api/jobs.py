@@ -5,8 +5,7 @@ from flask_mongoengine import MongoEngine
 import os
 
 # import blueprints
-from blueprints.user_routes import user_routes
-from blueprints.job_routes import job_routes
+from _blueprints.job_routes import job_routes
 
 # Loading environmentals
 load_dotenv()
@@ -30,9 +29,5 @@ db = MongoEngine()
 db.init_app(app)
 
 # register routes
-app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(job_routes, url_prefix='/api/jobs')
 
-# start the server
-if __name__ == '__main__':
-    app.run()
