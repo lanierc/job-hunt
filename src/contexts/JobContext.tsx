@@ -51,7 +51,10 @@ const JobContextProvider: React.FC = (props) => {
 
 	const fetchData = (): void => {
 		axios.get(`/api/jobs/${user}`).then((res: any) => {
-			setJobs(res.data.data);
+			const jobs: any = res.data.data.sort((x: any, y: any) => {
+				return x.date_applied.$date - y.date_applied.$date;
+			});
+			setJobs(jobs);
 		});
 	};
 
