@@ -17,7 +17,6 @@ interface IJobContext {
 		contactEmail: string
 	) => void;
 	jobs: Array<any>;
-	getJob: (id: string) => {};
 }
 
 export const JobContext = createContext<IJobContext>({
@@ -37,9 +36,6 @@ export const JobContext = createContext<IJobContext>({
 		return null;
 	},
 	jobs: [],
-	getJob: (id: string) => {
-		return {};
-	},
 });
 
 const JobContextProvider: React.FC = (props) => {
@@ -105,16 +101,8 @@ const JobContextProvider: React.FC = (props) => {
 			});
 	};
 
-	const getJob = (id: string): any => {
-		axios.get(`/api/jobs/job/${id}`).then((res: any) => {
-			return res.data.data;
-		});
-	};
-
 	return (
-		<JobContext.Provider
-			value={{ loading, success, error, addJob, jobs, getJob }}
-		>
+		<JobContext.Provider value={{ loading, success, error, addJob, jobs }}>
 			{props.children}
 		</JobContext.Provider>
 	);
