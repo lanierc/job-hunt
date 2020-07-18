@@ -153,7 +153,7 @@ nav ul button {
 
 .job-grid-row {
 	display: grid;
-	grid-template-columns: 2.5fr 2.5fr repeat(2, 1fr) 0.7fr 0.5fr;
+	grid-template-columns: 29% 29% repeat(2, 12%) 10% 8%;
 }
 
 .job-grid-row div {
