@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import DatePicker from "react-datepicker";
 import { JobContext } from "../contexts/JobContext";
+import { Redirect } from "react-router-dom";
 
 const CreateJob: React.FC = () => {
 	const { loading, success, error, addJob } = useContext(JobContext);
@@ -14,14 +15,14 @@ const CreateJob: React.FC = () => {
 	const [postingUrl, setPostingUrl] = useState("");
 	const [contactName, setContactName] = useState("");
 	const [contactEmail, setContactEmail] = useState("");
+
+	if (success) {
+		return <Redirect to="/" />;
+	}
+
 	return (
 		<div className="create-job">
 			<h2>Create a Job Application</h2>
-			{success && (
-				<p>
-					<span className="success">Success!</span> Job published to tracker!
-				</p>
-			)}
 			{error && (
 				<p>
 					<span className="error">Error:</span> {error}
@@ -50,7 +51,7 @@ const CreateJob: React.FC = () => {
 					setContactEmail("");
 				}}
 			>
-				<fieldset>
+				<fieldset disabled={loading}>
 					<div className="job-form-grid-container">
 						<div>
 							<label htmlFor="title">Job Title:</label>

@@ -55,6 +55,7 @@ const JobContextProvider: React.FC = (props) => {
 				return x.date_applied.$date - y.date_applied.$date;
 			});
 			setJobs(jobs);
+			setSuccess(false);
 		});
 	};
 
@@ -94,9 +95,9 @@ const JobContextProvider: React.FC = (props) => {
 		})
 			.then((res: any) => {
 				console.log(res);
+				setSuccess(true);
 				fetchData();
 				setLoading(false);
-				setSuccess(true);
 			})
 			.catch((err: any) => {
 				console.log(err);
