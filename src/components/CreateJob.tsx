@@ -141,7 +141,9 @@ const CreateJob: React.FC = () => {
 							/>
 						</div>
 						<div>
-							<button type="submit">Add Job</button>
+							<div className="btn-row">
+								<button type="submit">Save Job</button>
+							</div>
 						</div>
 					</div>
 				</fieldset>

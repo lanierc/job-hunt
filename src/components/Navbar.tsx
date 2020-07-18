@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
 					{user && (
 						<>
 							<Link to="/create-job">
-								<li>Create Job</li>
+								<li>Add Job</li>
 							</Link>
 							<button
 								onClick={(e) => {
