@@ -194,8 +194,8 @@ nav ul:last-child {
 	background: #d9d2e9;
 }
 
-.rejected-later {
-	background: #fef2cc;
+.failed {
+	background: #fae4cc;
 }
 
 .modal {
@@ -208,4 +208,50 @@ nav ul:last-child {
 	padding: 10px 25px 25px;
 	border: 1px solid black;
 	box-shadow: 0px 0px 54px 0px rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 1366px) {
+	.App > .container {
+		width: 72.5%;
+		height: 70vh;
+	}
+}
+
+@media (max-width: 1024px) {
+	.App > .container {
+		padding: 0.8rem 0.6rem;
+		width: 75%;
+	}
+
+	.App > .navbar {
+		right: 11%;
+	}
+
+	.job-grid-row {
+		grid-template-columns: repeat(2, 22%) 16.5% 16.5% 12% 11%;
+	}
+}
+
+@media (max-width: 1024px) and (max-device-height: 1366px) {
+	.App > .container {
+		height: 75vh;
+	}
+}
+
+@media (max-width: 411px) {
+	body {
+		font-size: 0.6rem;
+	}
+
+	h4 {
+		font-size: 0.7rem;
+	}
+
+	.App > .container {
+		width: 90%;
+		height: 80vh;
+		top: 20%;
+		padding: 0;
+		transform: translate(-50%, -5%);
+	}
 }
